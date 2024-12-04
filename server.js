@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require("express");
 const app = express();
 const db = require("./db");
@@ -17,6 +18,7 @@ app.use("/person",PersonRouter);
 //All menu routers
 app.use("/menu",menuRouter);
 
-app.listen(3000, () => {
+var PORT= process.env.Port || 3000 ;
+app.listen(PORT, () => {
   console.log("listening on port 3000");
 });
