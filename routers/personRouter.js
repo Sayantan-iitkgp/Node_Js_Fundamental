@@ -13,21 +13,6 @@ router.get("", async (req, res) => {
     res.status(500).json({ error: "Internal server error" });
   }
 });
-
-//Create using POST method at the collection where persons data is stored
-router.post("", async (req, res) => {
-  try {
-    const newPerson = new Person(req.body);
-
-    const response = await newPerson.save();
-    console.log("data saved");
-    res.status(200).json(response);
-  } catch {
-    console.log(err);
-    res.status(500).json({ error: "Internal server error" });
-  }
-});
-
 //Read using GET method at the collection where persons data is stored
 router.get("/:work", async (req, res) => {
   try {
@@ -65,10 +50,10 @@ router.put("/:id", async (req, res) => {
     if (!response) {
       console.log("No data found with this id");
       res.status(404).json({ error: "No data found with this id" });
-    } 
-    else{console.log("data updated");
-      res.status(200).json(response);}
-    
+    } else {
+      console.log("data updated");
+      res.status(200).json(response);
+    }
   } catch {
     console.log(err);
     res.status(500).json({ error: "Internal Server Error" });
